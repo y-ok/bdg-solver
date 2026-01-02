@@ -1,3 +1,45 @@
 spring:
   application:
     name: bdg-solver
+bdg:
+  lattice:
+    lx: 28
+    ly: 28
+    boundary: PERIODIC
+  model:
+    t: 1.0
+    u: -3.0
+    temperature: 0.005
+    totalParticleNumber: 100
+    mu-initial: -1.86
+    mu-initial-estimation:
+      enabled: true
+      tolerance: 0.5
+      max-iterations: 80
+      bracket-margin: 8.0
+      hartree-enabled: true
+      hartree-max-iterations: 30
+      hartree-tolerance: 1e-4
+      hartree-mixing: 0.5
+    zeeman-field-scan:
+      values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  trap:
+    r0: 1.0
+    omegaHo: 0.05
+    omegaTr: 6.0
+    xi: 3.8
+  scf:
+    maxIter: 1000
+    mixing:
+      densityAlpha: 0.3
+      orderParameterAlpha: 0.2
+    tolerance:
+      densityAbs: 1e-3
+      orderParameterAbs: 1e-4
+      orderParameterRmsAbs: 1e-4
+  chemical-potential-search:
+    mu-max-iterations: 1000
+    particle-tolerance: 0.5
+    warmStart: true
+  output:
+    dir: ./result
